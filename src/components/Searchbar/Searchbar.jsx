@@ -21,5 +21,6 @@ const Searchbar = ({ search }) => {
 
 export default Searchbar;
 
-Searchbar.propType = {
+SearchField.propType = {
+    search: PropTypes.func.isRequired,
 };

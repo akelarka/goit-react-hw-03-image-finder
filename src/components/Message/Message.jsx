@@ -8,5 +8,5 @@ export const Message = ({ message }) => {
 export default Message;
 
 Message.propType = {
-
+    message: PropTypes.string.isRequired,
 };

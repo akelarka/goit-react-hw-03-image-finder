@@ -19,4 +19,8 @@ const ImageGalleryItem = ({
 export default ImageGalleryItem;
 
 ImageGalleryItem.propType = {
+    id: PropTypes.string.isRequired,
+    webformatURL: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+    getLargeImg: PropTypes.func.isRequired,
 };

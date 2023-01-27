@@ -4,6 +4,11 @@ import { Overlay, ModalWrapper } from './Modal.styled';
 
 export class Modal extends Component {
 
+    static propTypes = {
+        onClose: PropTypes.func.isRequired,
+        largeImageURL: PropTypes.string.isRequired,
+    };
+
     componentDidMount() {
         window.addEventListener('keydown', this.onKeyDown);
     };

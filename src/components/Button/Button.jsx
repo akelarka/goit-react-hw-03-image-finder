@@ -12,4 +12,6 @@ const Button = ({ text, loadMore }) => {
 export default Button;
 
 Button.propType = {
+    text: PropTypes.string.isRequired,
+    loadMore: PropTypes.func.isRequired,
 };
