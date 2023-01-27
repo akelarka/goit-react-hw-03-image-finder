@@ -101,8 +101,6 @@ export class App extends Component {
   render() {
     const {
       photos,
-      page,
-      totalPages,
       largeImageURL,
       contentLoad,
       showModal,
