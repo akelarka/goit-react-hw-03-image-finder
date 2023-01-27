@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { ImSearch } from 'react-icons/im';
 import { SearchbarHeader, SearchForm, SearchFormButton, SearchFormButtonLabel, SearchFormInput} from './Searchbar.styled';
 
 const Searchbar = ({ search }) => {
@@ -6,6 +7,7 @@ const Searchbar = ({ search }) => {
         <SearchbarHeader>
             <SearchForm onSubmit={search}>
                 <SearchFormButton type="submit">
+                    <ImSearch style={{ width: 22, height: 22 }} />
                     <SearchFormButtonLabel>Search</SearchFormButtonLabel>
                 </SearchFormButton>
                 <SearchFormInput
@@ -21,6 +23,6 @@ const Searchbar = ({ search }) => {
 
 export default Searchbar;
 
-SearchField.propType = {
+Searchbar.propType = {
     search: PropTypes.func.isRequired,
 };

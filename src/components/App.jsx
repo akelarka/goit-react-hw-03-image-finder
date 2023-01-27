@@ -114,7 +114,8 @@ export class App extends Component {
         {message && <Message message={message} />}
         <ImageGallery photos={photos} getLargeImg={this.getLargeImg}/>
         {!contentLoad && <Loader />}
-        {totalPages > page && (
+        {(photos.length > 0 && photos.length >= 12)
+        && (
           <Button text="Load more" loadMore={this.loadMore} />
         )}
         {showModal && (
