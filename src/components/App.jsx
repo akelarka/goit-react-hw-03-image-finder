@@ -100,7 +100,7 @@ export class App extends Component {
       .firstElementChild.getBoundingClientRect().height;
   
     window.scrollBy({
-      top: cardHeight * 2,
+      top: cardHeight * 100,
       behavior: 'smooth',
     });
   }
