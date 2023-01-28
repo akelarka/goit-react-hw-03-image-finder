@@ -20,13 +20,10 @@ export class App extends Component {
     largeImageURL: '',
     contentLoad: false,
     showModal: false,
-    message: '',
+    message: 'To display pictures, enter a query in the search field',
   };
 
   componentDidMount() {
-    this.setState({
-      message: 'To display pictures, enter a query in the search field',
-    });
     this.getData();
   }
 
