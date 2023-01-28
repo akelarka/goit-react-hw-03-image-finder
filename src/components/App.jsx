@@ -31,6 +31,9 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (this.state.page !== 1) {
+      this.smoothScroll();
+    }
     if (
       prevState.request !== this.state.request ||
       prevState.page !== this.state.page
@@ -55,6 +58,7 @@ export class App extends Component {
     this.setState(prevState => ({
       page: prevState.page + 1,
     }));
+    
     console.log(this.state.page)
   }
 
@@ -88,6 +92,17 @@ export class App extends Component {
       
     });
     
+  }
+
+  smoothScroll() {
+    const cardHeight = document
+      .querySelector('ul')
+      .firstElementChild.getBoundingClientRect().height;
+  
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: 'smooth',
+    });
   }
 
   getLargeImg = largeImageURL => {
