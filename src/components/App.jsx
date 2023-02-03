@@ -8,9 +8,7 @@ import Loader from './Loader/Loader';
 import Modal from './Modal/Modal';
 import Message from './Message/Message';
 
-
 export class App extends Component {
-
   state = {
     photos: [],
     request: '',
@@ -35,7 +33,7 @@ export class App extends Component {
       prevState.request !== this.state.request ||
       prevState.page !== this.state.page
     ) {
-      this.setState({message: ''});
+      this.setState({ message: '' });
       this.getData(this.state.request, this.state.page, this.state.per_page);
     }
   }
@@ -55,47 +53,46 @@ export class App extends Component {
     this.setState(prevState => ({
       page: prevState.page + 1,
     }));
-    
-    console.log(this.state.page)
-  }
+
+    console.log(this.state.page);
+  };
 
   getData = (request, page, per_page) => {
-
     this.setState({ contentLoad: false });
     if (!request) {
-      this.setState({contentLoad: true});
+      this.setState({ contentLoad: true });
       return;
     }
 
     getPhoto(request, page, per_page).then(response => {
-      console.log(response.hits)
+      console.log(response.hits);
       if (response.hits.length === 0) {
         this.setState({
           message: 'Sorry, nothing was found, please try your search again',
         });
       }
 
-      const photos = response.hits.map(({id, webformatURL, largeImageURL}) => ({
-        id,
-        webformatURL,
-        largeImageURL,
-      }));
-  
+      const photos = response.hits.map(
+        ({ id, webformatURL, largeImageURL }) => ({
+          id,
+          webformatURL,
+          largeImageURL,
+        })
+      );
+
       this.setState(prevState => ({
         photos: [...prevState.photos, ...photos],
         totalPages: response.totalHits / this.state.per_page,
         contentLoad: true,
       }));
-      
     });
-    
-  }
+  };
 
   smoothScroll() {
     const cardHeight = document
       .querySelector('ul')
       .firstElementChild.getBoundingClientRect().height;
-  
+
     window.scrollBy({
       top: cardHeight * 100,
       behavior: 'smooth',
@@ -111,21 +108,15 @@ export class App extends Component {
   };
 
   render() {
-    const {
-      photos,
-      largeImageURL,
-      contentLoad,
-      showModal,
-      message,
-    } = this.state;
+    const { photos, largeImageURL, contentLoad, showModal, message } =
+      this.state;
     return (
       <AppWrapper>
-        <Searchbar search={this.searchResponse}/>
+        <Searchbar search={this.searchResponse} />
         {message && <Message message={message} />}
-        <ImageGallery photos={photos} getLargeImg={this.getLargeImg}/>
+        <ImageGallery photos={photos} getLargeImg={this.getLargeImg} />
         {!contentLoad && <Loader />}
-        {(photos.length > 0 && photos.length >= 12)
-        && (
+        {photos.length > 0 && photos.length >= 12 && (
           <Button text="Load more" loadMore={this.loadMore} />
         )}
         {showModal && (
@@ -135,4 +126,3 @@ export class App extends Component {
     );
   }
 }
-
